@@ -47,11 +47,12 @@ def main():
     print(colored(affirmation(todaykin.tone, todaykin.seal), todaykin.color.lower()))
 
     while True:
-        udob = input("Date of Birth: ")
+        user_dob = input("Date of Birth: ")
         try:
-            bday = text2date(udob)
+            bday = text2date(user_dob)
             break
         except ValueError:
+            print(f"Valid format is mm/dd/yyyy, 'Month day, year', or yyyy-mm-dd")
             continue
     bdaykin = Kin(date2kin(bday))
     print(colored(art(bdaykin.tone), bdaykin.color.lower()))
@@ -170,80 +171,46 @@ def guidance(seal, tone):
     }
     return guide[seal][tone % 5]
 
-
 def art(item):
-  if item == 'tzolkin':
-    return tzolkin
-  elif item == 'banner':
-    return banner
-  elif item == 'Dragon':
-    return dragon
-  elif item == 'Wind':
-    return wind
-  elif item == 'Night':
-    return night
-  elif item == 'Seed':
-    return seed
-  elif item == 'Serpent':
-    return serpent
-  elif item == 'World-Bridger':
-    return world_bridger
-  elif item == 'Hand':
-    return hand
-  elif item == 'Star':
-    return star
-  elif item == 'Moon':
-    return moon
-  elif item == 'Dog':
-    return dog
-  elif item == 'Monkey':
-    return monkey
-  elif item == 'Human':
-    return human
-  elif item == 'Sky-Walker':
-    return sky_walker
-  elif item == 'Wizard':
-    return wizard
-  elif item == 'Eagle':
-    return eagle
-  elif item == 'Warrior':
-    return warrior
-  elif item == 'Earth':
-    return earth
-  elif item == 'Mirror':
-    return mirror
-  elif item == 'Storm':
-    return storm
-  elif item == 'Sun':
-    return sun
-  elif item == 1:
-    return one
-  elif item == 2:
-    return two
-  elif item == 3:
-    return three
-  elif item == 4:
-    return four
-  elif item == 5:
-    return five
-  elif item == 6:
-    return six
-  elif item == 7:
-    return seven
-  elif item == 8:
-    return eight
-  elif item == 9:
-    return nine
-  elif item == 10:
-    return ten
-  elif item == 11:
-    return eleven
-  elif item == 12:
-    return twelve
-  elif item == 13:
-    return thirteen
-  else:
-    return f"wrong seal name"
+  items = {
+    'tzolkin': tzolkin,
+    'banner': banner,
+    'Dragon': dragon,
+    'Wind': wind,
+    'Night': night,
+    'Seed': seed,
+    'Serpent': serpent,
+    'World-Bridger': world_bridger,
+    'Hand': hand,
+    'Star': star,
+    'Moon': moon,
+    'Dog': dog,
+    'Monkey': monkey,
+    'Human': human,
+    'Sky-Walker': sky_walker,
+    'Wizard': wizard,
+    'Eagle': eagle,
+    'Warrior': warrior,
+    'Earth': earth,
+    'Mirror': mirror,
+    'Storm': storm,
+    'Sun': sun,
+    1: one,
+    2: two,
+    3: three,
+    4: four,
+    5: five,
+    6: six,
+    7: seven,
+    8: eight,
+    9: nine,
+    10: ten,
+    11: eleven,
+    12: twelve,
+    13: thirteen    
+  }
+  return items.get(item, f"wrong seal name")
+
 
 
 tzolkin = r"""
